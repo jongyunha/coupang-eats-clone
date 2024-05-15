@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {useCallback} from 'react';
 import {NavigationContainer, ParamListBase} from '@react-navigation/native';
 import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {Text, TouchableHighlight, View} from 'react-native';
-import {useCallback} from 'react';
+import {Pressable, Text, TouchableHighlight, View} from 'react-native';
 
 type RootStackParamList = {
   Home: undefined;
@@ -20,11 +20,38 @@ function HomeScreen({navigation}: HomeScreenProps) {
   }, [navigation]);
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <TouchableHighlight onPress={onClick}>
-        <Text>Home Screen</Text>
-      </TouchableHighlight>
-    </View>
+    <>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'yellow',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}>
+        <Pressable
+          onPress={onClick}
+          style={{
+            padding: 20,
+            backgroundColor: 'blue',
+          }}>
+          <Text
+            style={{
+              color: 'white',
+            }}>
+            Home Screen
+          </Text>
+        </Pressable>
+      </View>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: 'red',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text>Second</Text>
+      </View>
+    </>
   );
 }
 
